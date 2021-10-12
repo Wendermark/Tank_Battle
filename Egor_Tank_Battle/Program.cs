@@ -8,6 +8,9 @@ namespace Egor_Tank_Battle
 
         static void Battle(Tank[] firstSide, Tank[] seconSide)
         {
+
+            Console.Clear();
+
             if (firstSide.Length != seconSide.Length)
             {
                 Console.WriteLine("Неравные силы строн");
@@ -23,13 +26,11 @@ namespace Egor_Tank_Battle
             for (int i = 0; i < firstSide.Length; i++)
             {
 
-                bool result = firstSide[i] * seconSide[i];
-
                 Console.WriteLine(new string('-', 40));
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
 
-                Console.WriteLine($"Бой № {i.ToString()}");
+                Console.WriteLine($"Бой № {(i + 1).ToString()}");
 
                 Console.WriteLine();
 
@@ -43,7 +44,7 @@ namespace Egor_Tank_Battle
 
                 Console.WriteLine();
 
-                Console.WriteLine(result ? $"Победа за {seconSide[i].Name}" : $"Победа за {firstSide[i].Name}");
+                int result = firstSide[i] * seconSide[i];
 
                 Console.ForegroundColor = ConsoleColor.Green;
 
@@ -51,11 +52,11 @@ namespace Egor_Tank_Battle
 
                 Console.WriteLine();
 
-                points += result ? 1 : -1;
+                points += result > 0 ? 1 : result < 0 ? -1 : 0;
 
             }
 
-            Console.WriteLine(points > 0 ? $"Победа за командой {seconSide[0].Name}" : $"Победа за командой {firstSide[0].Name}");
+            Console.WriteLine(points > 0 ? $"Победа за командой {firstSide[0].Name}" : points < 0 ? $"Победа за командой {seconSide[0].Name}" : "НИЧЬЯ!");
 
         }
 
