@@ -44,6 +44,8 @@ namespace Egor_Tank_Battle
 
                 Console.WriteLine();
 
+                //Console.Beep();
+
                 int result = firstSide[i] * seconSide[i];
 
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -71,9 +73,9 @@ namespace Egor_Tank_Battle
 
             for (int i = 0; i < firstSide.Length; i++)
             {
-                firstSide[i] = new Tank("T-34", (byte)random.Next(1, 256), (byte)random.Next(1, 256), (byte)random.Next(1, 256));
+                firstSide[i] = new Tank("T-34", random.Next(1, 101), random.Next(1, 101), random.Next(1, 101));
 
-                secondSide[i] = new Tank("Panther", (byte)random.Next(1, 256), (byte)random.Next(1, 256), (byte)random.Next(1, 256));
+                secondSide[i] = new Tank("Panther", random.Next(1, 101), random.Next(1, 101), random.Next(1, 101));
             }
 
             Battle(firstSide, secondSide);
