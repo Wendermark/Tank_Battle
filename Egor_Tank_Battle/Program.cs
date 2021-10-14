@@ -6,12 +6,12 @@ namespace Egor_Tank_Battle
     class Program
     {
 
-        static void Battle(Tank[] firstSide, Tank[] seconSide)
+        static void Battle(Tank[] firstSide, Tank[] secondSide)
         {
 
             Console.Clear();
 
-            if (firstSide.Length != seconSide.Length)
+            if (firstSide.Length != secondSide.Length)
             {
                 Console.WriteLine("Неравные силы строн");
                 return;
@@ -38,7 +38,7 @@ namespace Egor_Tank_Battle
 
                 Console.WriteLine($"{firstSide[i].Name} \t\t {firstSide[i].Ammo.ToString()} \t {firstSide[i].Armour.ToString()} \t {firstSide[i].Mobility.ToString()}");
 
-                Console.WriteLine($"{seconSide[i].Name} \t {seconSide[i].Ammo.ToString()} \t {seconSide[i].Armour.ToString()} \t {seconSide[i].Mobility.ToString()}");
+                Console.WriteLine($"{secondSide[i].Name} \t {secondSide[i].Ammo.ToString()} \t {secondSide[i].Armour.ToString()} \t {secondSide[i].Mobility.ToString()}");
 
                 Console.ForegroundColor = ConsoleColor.Red;
 
@@ -46,7 +46,7 @@ namespace Egor_Tank_Battle
 
                 //Console.Beep();
 
-                int result = firstSide[i] * seconSide[i];
+                int result = firstSide[i] * secondSide[i];
 
                 Console.ForegroundColor = ConsoleColor.Green;
 
@@ -58,7 +58,7 @@ namespace Egor_Tank_Battle
 
             }
 
-            Console.WriteLine(points > 0 ? $"Победа за командой {firstSide[0].Name}" : points < 0 ? $"Победа за командой {seconSide[0].Name}" : "НИЧЬЯ!");
+            Console.WriteLine(points > 0 ? $"Победа за командой {firstSide[0].Name}" : points < 0 ? $"Победа за командой {seconSidde[0].Name}" : "НИЧЬЯ!");
 
         }
 
