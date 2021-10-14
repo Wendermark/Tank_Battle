@@ -25,18 +25,18 @@ namespace Egor_Tank_Battle.BaseClass
 
         public int Mobility { get; protected set; }
 
-        public static int operator * (Tank firstSide, Tank seconSide)
+        public static int operator * (Tank firstSide, Tank secondSide)
         {
 
             int battlePoints = 0;
 
-            battlePoints += firstSide.Ammo > seconSide.Ammo ? 1 : firstSide.Ammo < seconSide.Ammo ? -1 : 0;
+            battlePoints += firstSide.Ammo > secondSide.Ammo ? 1 : firstSide.Ammo < secondSide.Ammo ? -1 : 0;
 
-            battlePoints += firstSide.Armour > seconSide.Armour ? 1 : firstSide.Armour < seconSide.Armour ? -1 : 0;
+            battlePoints += firstSide.Armour > secondSide.Armour ? 1 : firstSide.Armour < secondSide.Armour ? -1 : 0;
 
-            battlePoints += firstSide.Mobility > seconSide.Mobility ? 1 : firstSide.Mobility < seconSide.Mobility ? -1 : 0;
+            battlePoints += firstSide.Mobility > secondSide.Mobility ? 1 : firstSide.Mobility < secondSide.Mobility ? -1 : 0;
 
-            Console.WriteLine(battlePoints > 0 ? $"Победа за {firstSide.Name}" : battlePoints < 0 ? $"Победа за {seconSide.Name}" : "Ничья");
+            Console.WriteLine(battlePoints > 0 ? $"Победа за {firstSide.Name}" : battlePoints < 0 ? $"Победа за {secondSide.Name}" : "Ничья");
 
             return battlePoints;
             
