@@ -17,7 +17,7 @@ namespace Egor_Tank_Battle
                 return;
             }
 
-            int points = 0;
+            int warPoints = 0;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Танк \t       Боезапас  Броня  Манёвренность");
@@ -54,11 +54,11 @@ namespace Egor_Tank_Battle
 
                 Console.WriteLine();
 
-                points += result > 0 ? 1 : result < 0 ? -1 : 0;
+                warPoints += result > 0 ? 1 : result < 0 ? -1 : 0;
 
             }
 
-            Console.WriteLine(points > 0 ? $"Победа за командой {firstSide[0].Name}" : points < 0 ? $"Победа за командой {seconSidde[0].Name}" : "НИЧЬЯ!");
+            Console.WriteLine(warPoints > 0 ? $"Победа за командой {firstSide[0].Name}" : warPoints < 0 ? $"Победа за командой {secondSide[0].Name}" : "НИЧЬЯ!");
 
         }
 
