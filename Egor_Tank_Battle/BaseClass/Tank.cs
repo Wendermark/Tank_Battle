@@ -8,7 +8,6 @@ namespace Egor_Tank_Battle.BaseClass
 {
     class Tank
     {
-
         public Tank(string name, int ammo, int armour, int mobility)
         {
             Name = name;
@@ -17,17 +16,28 @@ namespace Egor_Tank_Battle.BaseClass
             Mobility = mobility;
         }
 
-        public string Name { get; protected set; }
+        public string Name { get; private set; }
 
-        public int Ammo { get; protected set; }
+        public int Ammo { get; private set; }
 
-        public int Armour { get; protected set; }
+        public int Armour { get; private set; }
 
-        public int Mobility { get; protected set; }
+        public int Mobility { get; private set; }
+
+        public static Tank[] CreateTanks( int count, string nameOfTanks = "Unknown tank" )
+        {
+            var random = new Random();
+
+            Tank[] createdArray = new Tank[count];
+
+            for (int i = 0; i < createdArray.Length; i++)
+                createdArray[i] = new Tank(nameOfTanks, random.Next(1, 101), random.Next(1, 101), random.Next(1, 101));
+
+            return createdArray;
+        }
 
         public static int operator * (Tank firstSide, Tank secondSide)
         {
-
             int battlePoints = 0;
 
             battlePoints += firstSide.Ammo > secondSide.Ammo ? 1 : firstSide.Ammo < secondSide.Ammo ? -1 : 0;
@@ -39,9 +49,6 @@ namespace Egor_Tank_Battle.BaseClass
             Console.WriteLine(battlePoints > 0 ? $"Победа за {firstSide.Name}" : battlePoints < 0 ? $"Победа за {secondSide.Name}" : "Ничья");
 
             return battlePoints;
-            
         }
-
-
     }
 }
