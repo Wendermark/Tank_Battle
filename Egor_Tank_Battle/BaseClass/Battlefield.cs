@@ -27,15 +27,6 @@ namespace Egor_Tank_Battle.BaseClass
                 return;
             }
 
-            for (int i = 0; i < FirstSide.Length; i++)
-            {
-                if (FirstSide[i] is null || SecondSide[i] is null)
-                {
-                    Console.WriteLine("Обнаружен танк со значением null");
-                    return;
-                }
-            }
-
             int warPoints = 0;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -52,9 +43,9 @@ namespace Egor_Tank_Battle.BaseClass
 
                 Console.ForegroundColor = ConsoleColor.Green;
 
-                Console.WriteLine($"{FirstSide[i]?.Name} \t\t {FirstSide[i]?.Ammo} \t {FirstSide[i]?.Armour} \t {FirstSide[i]?.Mobility}");
+                Console.WriteLine($"{FirstSide[i].Name} \t\t {FirstSide[i].Ammo} \t {FirstSide[i].Armour} \t {FirstSide[i].Mobility}");
 
-                Console.WriteLine($"{SecondSide[i]?.Name} \t {SecondSide[i]?.Ammo} \t {SecondSide[i]?.Armour} \t {SecondSide[i]?.Mobility} \n");
+                Console.WriteLine($"{SecondSide[i].Name} \t {SecondSide[i].Ammo} \t {SecondSide[i].Armour} \t {SecondSide[i].Mobility} \n");
 
                 int result = FirstSide[i] * SecondSide[i];
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Egor_Tank_Battle.BaseClass
 {
-    class Tank
+    struct Tank
     {
         public Tank(string name, int ammo, int armour, int mobility)
         {
