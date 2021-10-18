@@ -1,5 +1,6 @@
 ﻿using System;
 using Egor_Tank_Battle.BaseClass;
+using Egor_Tank_Battle.Utils;
 
 namespace Egor_Tank_Battle
 {
@@ -7,13 +8,15 @@ namespace Egor_Tank_Battle
     {
         static void Main(string[] args)
         {
-            Tank[] firstSide = Tank.CreateTanks(5, "T-34");
+            var firstTeam = new Team<Tank>(3, "Russians");
 
-            Tank[] secondSide = Tank.CreateTanks(5, "Panther");
+            var secondTeam = new Team<Tank>(3, "Germans");
 
-            var battlefield = new Battlefield(firstSide, secondSide);
+            firstTeam.SetMembers(Creator.CreateTank("T-34"), Creator.CreateTank("T-34"), Creator.CreateTank("T-34"));
 
-            battlefield.Battle();
+            secondTeam.SetMembers(Creator.CreateTank("Panther"), Creator.CreateTank("Panther"), Creator.CreateTank("Panther"));
+
+            Battlefield.Battle(firstTeam, secondTeam);
 
             Console.ReadKey();
         }

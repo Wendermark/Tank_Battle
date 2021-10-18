@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Egor_Tank_Battle.BaseClass
 {
-    struct Tank
+    struct Tank : IEquatable<Tank>
     {
         public Tank(string name, int ammo, int armour, int mobility)
         {
@@ -24,17 +24,19 @@ namespace Egor_Tank_Battle.BaseClass
 
         public int Mobility { get; private set; }
 
-        public static Tank[] CreateTanks( int count, string nameOfTanks = "Unknown tank" )
+        public override int GetHashCode()
         {
-            var random = new Random();
+            int hashcode = Name.GetHashCode();
+            hashcode = 31 * hashcode + Ammo.GetHashCode();
+            hashcode = 31 * hashcode + Armour.GetHashCode();
+            hashcode = 31 * hashcode + Mobility.GetHashCode();
 
-            Tank[] createdArray = new Tank[count];
-
-            for (int i = 0; i < createdArray.Length; i++)
-                createdArray[i] = new Tank(nameOfTanks, random.Next(1, 101), random.Next(1, 101), random.Next(1, 101));
-
-            return createdArray;
+            return hashcode;
         }
+
+        public bool Equals(Tank another) => Name == another.Name && Ammo == another.Ammo && Armour == another.Armour && Mobility == another.Mobility;
+
+        public override bool Equals(object obj) => Equals((Tank)obj);
 
         public static int operator * (Tank firstSide, Tank secondSide)
         {
@@ -50,5 +52,7 @@ namespace Egor_Tank_Battle.BaseClass
 
             return battlePoints;
         }
+
+        public override string ToString() => $"{Name}\t\t {Ammo}\t {Armour}\t {Mobility}";
     }
 }
