@@ -9,6 +9,7 @@ namespace Egor_Tank_Battle.BaseClass
     class Team<T> : IEquatable<Team<T>>
     {
         public T[] Members { get; private set; }
+        
         public string Name { get; private set; }
 
         public int Count { get; private set; }
