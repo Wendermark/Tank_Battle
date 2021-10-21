@@ -10,7 +10,7 @@ namespace Egor_Tank_Battle
         {
             var firstTeam = new Team<Tank>(3, "Russians");
 
-            var secondTeam = new Team<Tank>(3, "Germans");
+            var secondTeam = new Team<Tank>(4, "Germans");
 
             firstTeam.SetMembers(Creator.CreateTank("T-34"), Creator.CreateTank("T-34"), Creator.CreateTank("T-34"));
 

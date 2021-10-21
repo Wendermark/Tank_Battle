@@ -25,6 +25,9 @@ namespace Egor_Tank_Battle.BaseClass
 
         public void AddMember(T member)
         {
+            if (member is null)
+                return;
+
             if (Count.Equals(Length))
             {
                 T[] newArray = new T[Count * 2];
@@ -46,12 +49,18 @@ namespace Egor_Tank_Battle.BaseClass
 
         public void SetMembers(params T[] members)
         {
+            if (members is null)
+                return;
+
             Members = members is null ? Members : members;
             Count = Members.Length;
         }
 
         public bool Equals(Team<T> another)
         {
+            if (another is null)
+                return false;
+
             if (Count != another.Count)
                 return false;
 
