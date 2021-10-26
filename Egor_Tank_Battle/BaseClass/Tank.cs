@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Egor_Tank_Battle.Interfaces;
 
 namespace Egor_Tank_Battle.BaseClass
 {
-    struct Tank : IEquatable<Tank>
+    class Tank : IComparable<Tank>, ITank
     {
         public Tank(string name, int ammo, int armour, int mobility)
         {
@@ -24,35 +25,19 @@ namespace Egor_Tank_Battle.BaseClass
 
         public int Mobility { get; private set; }
 
-        public override int GetHashCode()
-        {
-            int hashcode = Name.GetHashCode();
-            hashcode = 31 * hashcode + Ammo.GetHashCode();
-            hashcode = 31 * hashcode + Armour.GetHashCode();
-            hashcode = 31 * hashcode + Mobility.GetHashCode();
+        public override string ToString() => $"{Name}\t\t {Ammo}\t {Armour}\t {Mobility}";
 
-            return hashcode;
-        }
-
-        public bool Equals(Tank another) => Name == another.Name && Ammo == another.Ammo && Armour == another.Armour && Mobility == another.Mobility;
-
-        public override bool Equals(object obj) => Equals((Tank)obj);
-
-        public static int operator * (Tank firstSide, Tank secondSide)
+        public int CompareTo(Tank other)
         {
             int battlePoints = 0;
 
-            battlePoints += firstSide.Ammo > secondSide.Ammo ? 1 : firstSide.Ammo < secondSide.Ammo ? -1 : 0;
+            battlePoints += Ammo > other.Ammo ? 1 : Ammo < other.Ammo ? -1 : 0;
+            battlePoints += Armour > other.Armour ? 1 : Armour < other.Armour ? -1 : 0;
+            battlePoints += Mobility > other.Mobility ? 1 : Mobility < other.Mobility ? -1 : 0;
 
-            battlePoints += firstSide.Armour > secondSide.Armour ? 1 : firstSide.Armour < secondSide.Armour ? -1 : 0;
-
-            battlePoints += firstSide.Mobility > secondSide.Mobility ? 1 : firstSide.Mobility < secondSide.Mobility ? -1 : 0;
-
-            Console.WriteLine(battlePoints > 0 ? $"Победа за {firstSide.Name}" : battlePoints < 0 ? $"Победа за {secondSide.Name}" : "Ничья");
+            Console.WriteLine(battlePoints > 0 ? $"Победа за {Name}" : battlePoints < 0 ? $"Победа за {other.Name}" : "Ничья");
 
             return battlePoints;
         }
-
-        public override string ToString() => $"{Name}\t\t {Ammo}\t {Armour}\t {Mobility}";
     }
 }

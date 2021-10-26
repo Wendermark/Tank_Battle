@@ -9,10 +9,7 @@ namespace Egor_Tank_Battle.Utils
 {
     class Creator
     {
-        public static Tank CreateTank(string name = "Unknown")
-        {
-            var rnd = new Random();
-            return new Tank(name, rnd.Next(1, 101), rnd.Next(1, 101), rnd.Next(1, 101));
-        }
+        readonly static Random rnd = new Random();
+        public static Tank CreateTank(string name = "Unknown") => new Tank(name, rnd.Next(1, 101), rnd.Next(1, 101), rnd.Next(1, 101));
     }
 }

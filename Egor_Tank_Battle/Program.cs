@@ -8,10 +8,13 @@ namespace Egor_Tank_Battle
     {
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            
             var firstTeam = new Team<Tank>(3, "Russians");
 
             var secondTeam = new Team<Tank>(4, "Germans");
 
+            firstTeam.SetMembers(Creator.CreateTank("T-34"), Creator.CreateTank("T-34"), Creator.CreateTank("T-34"));
             firstTeam.SetMembers(Creator.CreateTank("T-34"), Creator.CreateTank("T-34"), Creator.CreateTank("T-34"));
 
             secondTeam.SetMembers(Creator.CreateTank("Panther"), Creator.CreateTank("Panther"), Creator.CreateTank("Panther"));
