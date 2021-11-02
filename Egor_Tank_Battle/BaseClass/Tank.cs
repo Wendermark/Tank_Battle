@@ -7,7 +7,7 @@ using Egor_Tank_Battle.Interfaces;
 
 namespace Egor_Tank_Battle.BaseClass
 {
-    class Tank : IComparable<Tank>, ITank
+    class Tank : ITank
     {
         public Tank(string name, int ammo, int armour, int mobility)
         {
@@ -27,7 +27,7 @@ namespace Egor_Tank_Battle.BaseClass
 
         public override string ToString() => $"{Name}\t\t {Ammo}\t {Armour}\t {Mobility}";
 
-        public int CompareTo(Tank other)
+        public int CompareTo(ITank other)
         {
             int battlePoints = 0;
 

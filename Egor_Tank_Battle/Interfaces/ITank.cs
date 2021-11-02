@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Egor_Tank_Battle.Interfaces
 {
-    interface ITank
+    interface ITank : IComparable<ITank>
     {
         public string Name { get; }
 

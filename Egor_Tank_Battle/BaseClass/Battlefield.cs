@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Egor_Tank_Battle.BaseClass
 {
-    class Battlefield
+    class Battlefield<T> where T : Team<T>
     {
         public static void Battle(Team<Tank> firstSide, Team<Tank> secondSide)
         {
